@@ -4,7 +4,7 @@ import React from 'react';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import { Image, View, Text, StyleSheet } from 'react-native'; 
 
-// Importaciones de Pantallas y Hooks
+// Importaciones
 import HomeScreen from '../app/Main/HomeScreen';
 import SettingsScreen from '../app/Main/SettingsScreen';
 import LogoutScreen from '../app/Main/LogoutScreen';
@@ -17,7 +17,6 @@ const USER_PHOTO_URL = 'https://i.pravatar.cc/150?img=68';
 const userName = "Usuario de Prueba"; 
 // ---------------------------------
 
-// 🚨 1. COMPONENTE PERSONALIZADO DEL CONTENIDO DEL DRAWER
 const CustomDrawerContent = (props) => {
     const { colors } = useTheme();
 
@@ -51,16 +50,14 @@ const CustomDrawerContent = (props) => {
 
     return (
         <View style={{ flex: 1 }}>
-            {}
             <View style={styles.drawerHeader}>
                 <Image
                     source={{ uri: USER_PHOTO_URL }}
                     style={styles.profileImage}
                 />
-                <Text style={styles.userNameText}>{userName}</Text>
+                <Text style={styles.userNameText}>{userName}</Text> 
             </View>
 
-            {}
             <DrawerContentScrollView 
                 {...props} 
                 contentContainerStyle={styles.drawerListContainer}
@@ -70,18 +67,29 @@ const CustomDrawerContent = (props) => {
         </View>
     );
 };
-// CÓDIGO DENTRO DE Drawer.Navigator EN navigation/DrawerNavigator.jsx
+
 
 const DrawerNavigator = () => {
   const { colors, isDarkTheme } = useTheme();
 
-  // 🚨 ESTE ES EL LUGAR CORRECTO PARA EL RETURN 🚨
-  return ( 
+  return (
     <Drawer.Navigator
       initialRouteName="Home Screen"
       drawerContent={(props) => <CustomDrawerContent {...props} />} 
       screenOptions={{
-        // ... opciones de estilo
+        headerStyle: {
+          backgroundColor: colors.card,
+        },
+        headerTintColor: colors.text,
+        sceneContainerStyle: {
+          backgroundColor: colors.background,
+        },
+        drawerStyle: {
+          backgroundColor: colors.background,
+        },
+        drawerInactiveTintColor: colors.text,
+        drawerActiveTintColor: colors.primary,
+        drawerActiveBackgroundColor: isDarkTheme ? '#3f3f46' : '#e0f2f1', 
       }}
     >
       <Drawer.Screen name="Home Screen" component={HomeScreen} />
@@ -90,5 +98,5 @@ const DrawerNavigator = () => {
     </Drawer.Navigator>
   );
 };
-export default DrawerNavigator;
 
+export default DrawerNavigator;
