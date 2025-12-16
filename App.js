@@ -1,25 +1,20 @@
 // App.js
 import React from 'react';
+// Importación crucial para el Drawer Navigator
+import { GestureHandlerRootView } from 'react-native-gesture-handler'; 
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import RootNavigator from './navigation/RootNavigator';
 
-// Si usas gluestack-ui, aquí importarías el componente GluestackUIProvider
-// import { GluestackUIProvider } from '@gluestack-ui/themed';
-// import { config } from './gluestack-config'; // Asegúrate de tener tu archivo de configuración
-
 const App = () => {
   return (
-    <AuthProvider>
-      <ThemeProvider>
-        {/*
-        <GluestackUIProvider config={config}>
+    <GestureHandlerRootView style={{ flex: 1 }}> 
+      <AuthProvider>
+        <ThemeProvider>
           <RootNavigator />
-        </GluestackUIProvider>
-        */}
-        <RootNavigator />
-      </ThemeProvider>
-    </AuthProvider>
+        </ThemeProvider>
+      </AuthProvider>
+    </GestureHandlerRootView>
   );
 };
 
