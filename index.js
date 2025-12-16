@@ -1,5 +1,3 @@
-// index.js (Este es el punto de entrada principal)
-
 import { registerRootComponent } from 'expo';
 import React from 'react';
 // Importaciones de Contextos y Navegación

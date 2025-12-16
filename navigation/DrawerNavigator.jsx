@@ -1,21 +1,15 @@
-// navigation/DrawerNavigator.jsx
-
 import React from 'react';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import { Image, View, Text, StyleSheet } from 'react-native'; 
-
-// Importaciones
 import HomeScreen from '../app/Main/HomeScreen';
 import SettingsScreen from '../app/Main/SettingsScreen';
 import LogoutScreen from '../app/Main/LogoutScreen';
 import useTheme from '../hooks/useTheme';
+import DefaulAvatar from '../assets/images/descarga.png'; 
 
 const Drawer = createDrawerNavigator();
-
-// --- Datos de Perfil de Prueba ---
-const USER_PHOTO_URL = 'https://i.pravatar.cc/150?img=68'; 
+const USER_PHOTO_URL = 'descarga.png'; 
 const userName = "Usuario de Prueba"; 
-// ---------------------------------
 
 const CustomDrawerContent = (props) => {
     const { colors } = useTheme();
@@ -52,7 +46,7 @@ const CustomDrawerContent = (props) => {
         <View style={{ flex: 1 }}>
             <View style={styles.drawerHeader}>
                 <Image
-                    source={{ uri: USER_PHOTO_URL }}
+                    source={ DefaulAvatar }
                     style={styles.profileImage}
                 />
                 <Text style={styles.userNameText}>{userName}</Text> 
@@ -70,33 +64,33 @@ const CustomDrawerContent = (props) => {
 
 
 const DrawerNavigator = () => {
-  const { colors, isDarkTheme } = useTheme();
+    const { colors, isDarkTheme } = useTheme();
 
-  return (
-    <Drawer.Navigator
-      initialRouteName="Home Screen"
-      drawerContent={(props) => <CustomDrawerContent {...props} />} 
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: colors.card,
-        },
-        headerTintColor: colors.text,
-        sceneContainerStyle: {
-          backgroundColor: colors.background,
-        },
-        drawerStyle: {
-          backgroundColor: colors.background,
-        },
-        drawerInactiveTintColor: colors.text,
-        drawerActiveTintColor: colors.primary,
-        drawerActiveBackgroundColor: isDarkTheme ? '#3f3f46' : '#e0f2f1', 
-      }}
-    >
-      <Drawer.Screen name="Home Screen" component={HomeScreen} />
-      <Drawer.Screen name="Setting Screen" component={SettingsScreen} />
-      <Drawer.Screen name="Logout" component={LogoutScreen} />
-    </Drawer.Navigator>
-  );
+    return (
+        <Drawer.Navigator
+            initialRouteName="Home Screen"
+            drawerContent={(props) => <CustomDrawerContent {...props} />} 
+            screenOptions={{
+                headerStyle: {
+                    backgroundColor: colors.card,
+                },
+                headerTintColor: colors.text,
+                sceneContainerStyle: {
+                    backgroundColor: colors.background,
+                },
+                drawerStyle: {
+                    backgroundColor: colors.background,
+                },
+                drawerInactiveTintColor: colors.text,
+                drawerActiveTintColor: colors.primary,
+                drawerActiveBackgroundColor: isDarkTheme ? '#3f3f46' : '#e0f2f1', 
+            }}
+        >
+            <Drawer.Screen name="Home Screen" component={HomeScreen} />
+            <Drawer.Screen name="Setting Screen" component={SettingsScreen} />
+            <Drawer.Screen name="Logout" component={LogoutScreen} />
+        </Drawer.Navigator>
+    );
 };
 
 export default DrawerNavigator;
