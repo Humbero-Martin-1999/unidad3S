@@ -5,7 +5,6 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "segundasunidad3",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
@@ -26,7 +25,7 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "expo-router",
+      // 🚨 ¡SE ELIMINÓ: "expo-router"!
       [
         "expo-splash-screen",
         {
@@ -41,7 +40,7 @@
       ]
     ],
     "experiments": {
-      "typedRoutes": true,
+      // 🚨 ¡SE ELIMINÓ: "typedRoutes": true!
       "reactCompiler": true
     }
   }
